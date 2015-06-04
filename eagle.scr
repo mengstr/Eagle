@@ -1,0 +1,67 @@
+# ===================================================
+# Eagle Configuration Script v1.0
+# ===================================================
+#
+# Sets the defaults and the key shortcuts to the way
+# I like it. :-)
+#
+# This file and other Eagle stuff can be found at 
+# https://github.com/SmallRoomLabs/Eagle
+#
+# Mats Engstrom / SmallRoomLabs.com
+# 
+
+BRD:
+# Make ratsnest *not* to flood polyfills 
+set POLYGON_RATSNEST OFF;
+
+# This grid is good for thru-hole designs
+grid ON mil 50 ALT mil 12.5;
+
+# I usually use 8 mil wires
+change width 8;
+
+# I like round vias that are 12mil/0.3mm
+change shape ROUND;
+change drill 12; 
+
+#
+#  ^t Top 
+#  ^b Bottom	
+#  ^a All (bot+top)
+# ↑^a All (top/bot) clean
+#  ^u Only unrouted wires and dimension/milling
+# ↑^u Hide unrouted
+#  ^p Polyfills enabled
+# ↑^p Hide polyfills
+#
+
+assign   C+T 'display none top tPlace tOrigins tNames pads vias holes dimension milling unrouted;'
+assign   C+B 'display none bot bPlace bOrigins bNames pads vias holes dimension milling unrouted;'
+assign   C+A 'display none top tPlace tOrigins tNames bottom bPlace bOrigins bNames pads vias holes dimension milling unrouted;'
+assign  SC+A 'display none top tOrigins bottom bOrigins pads vias holes dimension milling unrouted;'
+assign   C+U 'display none unrouted dimension milling holes;'
+assign  SC+U 'display -unrouted;'
+assign   C+P 'set POLYGON_RATSNEST ON;ratsnest;set POLYGON_RATSNEST OFF;'
+assign  SC+p 'RIPUP @;'
+
+
+SCH:
+Grid Default;
+Change Width 0.006in;
+
+LBR:
+
+
+DEV:
+Grid Default;
+
+SYM:
+Grid Default On;
+Change Width 0.010in;
+
+PAC:
+Grid Default On;
+Change Width 0.005in;
+Change Size 0.050in;
+
